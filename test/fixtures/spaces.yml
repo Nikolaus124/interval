@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient: one
+  doctor: one
+  start_time: MyString
+  end_time: MyString
+  create_date: 2020-11-10
+
+two:
+  patient: two
+  doctor: two
+  start_time: MyString
+  end_time: MyString
+  create_date: 2020-11-10
