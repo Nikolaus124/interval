@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'spaces#index'
   resources :spaces
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :doctors
+  get 'doctors/all' => 'doctors#show'
+
+  resources :patients
+  get 'patients/new' => 'patients#new'
 end

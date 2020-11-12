@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Interval</title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -18,7 +19,13 @@
 
   <p>Select Date: <input type="text" id="datepicker"></p>
 
-  <p>Choose a Doctor: <%= select_tag 'doctor_pos', options_for_select(@doctors.collect{ |d| [d.position] }), {:include_blank => true }%></p>
+  <p>Choose a Doctor: <%= select_tag 'doctor_id', options_for_select(@doctors.collect{ |d| [d.position] }), {:include_blank => true }%></p>
+
+  <p>Choose a Patient name: <%= select_tag 'patient_id', options_for_select(@patients.collect{ |p| ["#{p.first_name} #{p.last_name}"] }), {:include_blank => true }%></p>
+
+
+  <%= link_to "List of doctors", "/doctors/all" %>
+  <%= link_to "New patient", "/patients/new" %>
 
 </body>
 </html>
