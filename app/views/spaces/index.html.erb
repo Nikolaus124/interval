@@ -18,6 +18,16 @@
 </head>
 <body>
 
+<% if @space.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+    <ul>
+      <% @space.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <%= form_for Space.new do |f|%>
 

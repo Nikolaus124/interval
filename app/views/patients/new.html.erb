@@ -8,12 +8,24 @@
 <body>
   <h2>New Patient</h2>
 
-  <%= form_for @patient do |f|%>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <% if @patient.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+    <ul>
+      <% @patient.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= form_for @patient do |f|%>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
 
   <%= f.submit 'Save' %>
   <% end %>

@@ -12,6 +12,7 @@
     <tr>
       <th>Position</th>
       <th>Name</th>
+      <th>Worktime</th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td><%= d.position %></td>
         <td><%= d.first_name %> <%= d.last_name %></td>
+        <td><%= d.begin %>-<%= d.end %></td>
       </tr>
     <% end %>
     </tbody>
