@@ -1,10 +1,11 @@
 class SpacesController < ApplicationController
   def index
-    @doctors = Doctor.all
-    @patients = Patient.all
+
   end
 
   def new
+    @doctors = Doctor.all
+    @patients = Patient.all
     @space = Space.new
   end
 
@@ -13,7 +14,7 @@ class SpacesController < ApplicationController
     if @space.save
       redirect_to @space
     else
-      render :index
+      render :new
     end
   end
 
