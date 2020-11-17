@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interval</title>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+      $( function() {
+          $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
+      } );
+  </script>
+
+</head>
+<body>
+
+<% if @space.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+    <ul>
+      <% @space.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= form_for Space.new do |f|%>
+
+  <%= f.label :create_date %>
+  <%= f.text_field :create_date, id: "datepicker"%>
+
+  <p>Choose a Doctor: <%= f.collection_select :doctor_id, Doctor.all, :id, :position, prompt: true %> </p>
+  <p>Choose a Patient name: <%= f.collection_select :patient_id, Patient.all, :id, :name_with_ln, prompt: true%></p>
+  <p><%= f.label :start_time %>
+   <%= f.text_field :start_time%></p>
+
+  <p><%= f.label :end_time %>
+  <%= f.text_field :end_time%></p>
+
+  <%= f.submit 'Save', class: 'btn btn-success'%>
+
+<% end %>
+
+</body>
+</html>
