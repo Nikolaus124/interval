@@ -1,4 +1,3 @@
-
 class Space < ApplicationRecord
   MIN_LENGTH = 5
   MAX_LENGTH = 30
@@ -8,24 +7,36 @@ class Space < ApplicationRecord
   belongs_to :patient
   belongs_to :doctor
   validate :actual_date, :actual_time, :time_inv, :division, :length_interval
+  validates_with SpaceValidator
 
+  def self.search(search)
+    if search
+      doctor = Doctor.find_by(position: search)
+      if doctor
+        where(doctor_id: doctor)
+      else
+        Doctor.all
+      end
+    else
+      Doctor.all
+    end
+  end
+  
   def actual_date
-    errors.add(:base, 'incorrect date') if create_date < Time.now.to_date
+    errors.add(:base, "incorrect date") if create_date < Time.now.to_date
   end
 
-
   def actual_time
-    errors.add(:base, 'Invalid interval') if Time.parse(start_time) < Time.now && Time.parse(end_time) < Time.now
+    errors.add(:base, "Invalid interval") if Time.parse(start_time) < Time.now && Time.parse(end_time) < Time.now
   end
 
   def time_inv
-    errors.add(:base, 'REVERS NOT NORMAL') if Time.parse(start_time) > Time.parse(end_time)
+    errors.add(:base, "REVERS NOT NORMAL") if Time.parse(start_time) > Time.parse(end_time)
   end
 
   def division
     errors.add(:base, "Minutes must be multiples of #{MIN_LENGTH}") if Time.parse(start_time).min % MIN_LENGTH != 0 || Time.parse(end_time).min % MIN_LENGTH != 0
   end
-
 
   def length_interval
     s = Time.parse(start_time)
