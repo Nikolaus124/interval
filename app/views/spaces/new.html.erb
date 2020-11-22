@@ -11,14 +11,20 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
+
+  <link rel="stylesheet" type="text/css" href="js/jquery.datetimepicker.css" >
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.datetimepicker.js"></script>
+
   <script>
       $( function() {
-          $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
-
-
+          $( "#datepicker,#dtp" ).datepicker({dateFormat: "yy-mm-dd"});
+          $("#datetimepicker").datetimepicker({});
       } );
 
+
   </script>
+
 
 </head>
 <body>
@@ -42,12 +48,14 @@
   <p>Choose a Doctor: <%= f.collection_select :doctor_id, Doctor.all, :id, :position, prompt: true %> </p>
   <p>Choose a Patient name: <%= f.collection_select :patient_id, Patient.all, :id, :name_with_ln, prompt: true%></p>
   <p><%= f.label :start_time %>
-   <%= f.text_field :start_time, id: 'date_with_hours_and_minutes', :autocomplete => :off%></p>
+   <%= f.text_field :start_time, id: "datetimepicker", :autocomplete => :off%></p>
 
   <p><%= f.label :end_time %>
   <%= f.text_field :end_time, :autocomplete => :off%></p>
 
   <%= f.submit 'Save', class: 'btn btn-success'%>
+
+
 
 <% end %>
 

@@ -58,3 +58,4 @@ gem 'rubocop-airbnb'
 
 
 gem "jquery-ui-rails"
+
