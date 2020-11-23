@@ -15,10 +15,10 @@ class Space < ApplicationRecord
       if doctor
         where(doctor_id: doctor)
       else
-        Doctor.all
+        Space.all
       end
     else
-      Doctor.all
+      Space.all
     end
   end
 
