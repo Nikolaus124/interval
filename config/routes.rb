@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :spaces
 
 
+
   #get "doctors/schedule" => "doctors#schedule"
   get "doctors/all" => "doctors#show"
   resources :doctors

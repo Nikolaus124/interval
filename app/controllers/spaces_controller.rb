@@ -1,17 +1,17 @@
 class SpacesController < ApplicationController
+
   def index
-    @spaces = Space.search(params[:search])
     @doctors = Doctor.all
+    if (params[:dcr] and params[:dt])
+      @spaces = Space.search(params[:dcr], params[:dt])
+    end
+
   end
 
   def new
     @doctors = Doctor.all
     @patients = Patient.all
     @space = Space.new
-  end
-
-  def find
-    @spaces = Space.find_by(doctor_id: params[:doctor_id], create_date: params[:create_date])
   end
 
   def create
@@ -26,7 +26,7 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:patient_id, :doctor_id, :start_time, :end_time, :create_date, :search)
+    params.require(:space).permit(:patient_id, :doctor_id, :start_time, :end_time, :create_date, :dcr, :dt)
   end
 
 end

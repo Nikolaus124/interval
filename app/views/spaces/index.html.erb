@@ -14,26 +14,24 @@
   </script>
 </head>
 <body>
-  <%= link_to "To main page", root_path %>
+
   <h2>Search</h2>
 
   <%= form_tag(spaces_path, method: :get) do %>
-  <p>Choose Date: <%= text_field_tag :create_date, nil, :class => 'datepicker', :autocomplete => :off%></p>
-  <p>Choose a Doctor: <%= select_tag :search, options_from_collection_for_select(@doctors, :position, :position, params[:search]), prompt: "Select something"%> </p>
+  <p>Choose Date: <%= text_field_tag :dt, params[:dt], :class => 'datepicker', :autocomplete => :off%></p>
+  <p>Choose a Doctor: <%= select_tag :dcr, options_from_collection_for_select(@doctors, :id, :position, params[:dcr]), prompt: "Select doctor"%> </p>
   <%= submit_tag ("Search")%>
   <%end%>
 
-  <%= text_field_tag :search, params[:search] %>
-
-
+<% if @spaces%>
   <%= @spaces.each do |space| %>
   <ul>
-    <li><%= space.patient_id %></li>
+    <li><%= space.start_time %>-<%= space.end_time %></li>
   </ul>
-<% end %>
+  <% end %>
+<%end%>
 
-
-
+  <%= link_to "To main page", root_path %>
 
 
 </body>

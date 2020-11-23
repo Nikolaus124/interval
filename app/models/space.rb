@@ -9,6 +9,7 @@ class Space < ApplicationRecord
   validate :actual_date, :actual_time, :time_inv, :division, :length_interval, :check_d_h
   validates_with SpaceValidator
 
+=begin
   def self.search(search)
     if search
       doctor = Doctor.find_by(position: search)
@@ -20,6 +21,11 @@ class Space < ApplicationRecord
     else
       Space.all
     end
+  end
+=end
+
+  def self.search(dcr, dt)
+    where(["doctor_id = ? AND create_date = ?", dcr.to_s, dt.to_s])
   end
 
   def actual_date
