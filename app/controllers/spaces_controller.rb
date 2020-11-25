@@ -2,7 +2,7 @@ class SpacesController < ApplicationController
 
   def index
     @doctors = Doctor.all
-    if (params[:dcr] and params[:dt])
+    if params[:dcr] && params[:dt]
       @spaces = Space.search(params[:dcr], params[:dt])
     end
 
