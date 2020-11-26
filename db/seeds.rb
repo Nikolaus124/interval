@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+#
+
+Doctor.create( :first_name => 'John', :last_name => 'Johnson', :tel => '+380654123245',
+               :position => 'Surgeon', :begin => '08:00', :end => '15:00')

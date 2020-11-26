@@ -23,4 +23,4 @@ To run the application you need:
 * And run rails s to start project server.
 
 
-For the project to work correctly, you need to create at least one doctor using MySQL, as this item is not provided in the project.
+For the project to work correctly, you need to run rake db:seed to create first doctor, as this item is not provided in the project.
