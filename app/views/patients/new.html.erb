@@ -6,7 +6,8 @@
 
 </head>
 <body>
-  <h2>New Patient</h2>
+
+
 
   <% if @patient.errors.any? %>
   <div class="alert alert-danger">
@@ -19,18 +20,28 @@
   </div>
 <% end %>
 
+
+  <div class="inp_f">
+  <h2>New Patient</h2>
+
   <%= form_for @patient do |f|%>
 
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :autocomplete => :off, class: "txt_field"%>
+
+    <br>
 
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :autocomplete => :off , class: "txt_field"%>
 
-  <%= f.submit 'Save' %>
+    <br>
+
+  <%= f.submit 'Save', class: 'btn btn-outline-primary'%>
+  <%= link_to "Back", root_path, class: "btn btn-outline-dark"  %>
+
   <% end %>
 
-  <%= link_to "Back", root_path %>
+  </div>
 
 </body>
 </html>

@@ -1,3 +1,25 @@
 // Place all the styles related to the Spaces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.inp_space{
+  padding:7px;
+  background:#F7F7F7;
+  color:#007bff; border:2px solid #007bff;
+  border-radius:20px;
+  margin:auto;
+  width:230px;
+}
+h2{
+  text-align: center;
+}
+
+.txt_field{
+  border-color: #007bff;
+  margin-bottom: 5px;
+}
+
+.form-control_add{
+  border-color: #007bff;
+  border-width: 2px;
+}

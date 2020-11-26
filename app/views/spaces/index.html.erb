@@ -9,30 +9,45 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
       $( function() {
-          $( ".datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
+          $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
       } );
   </script>
 </head>
 <body>
 
-  <h2>Search</h2>
+  <div class="inp_space">
 
-  <%= form_tag(spaces_path, method: :get) do %>
-  <p>Choose Date: <%= text_field_tag :dt, params[:dt], :class => 'datepicker', :autocomplete => :off%></p>
-  <p>Choose a Doctor: <%= select_tag :dcr, options_from_collection_for_select(@doctors, :id, :position, params[:dcr]), prompt: "Select doctor"%> </p>
-  <%= submit_tag ("Search")%>
+  <h2>Schedule</h2>
+
+
+    <%= form_tag(spaces_path, method: :get) do %>
+      <p>Choose Date: <%= text_field_tag :dt, params[:dt], id:'datepicker', :autocomplete => :off, :class => "txt_field"%></p>
+      <p>Choose a Doctor: <%= select_tag :dcr, options_from_collection_for_select(@doctors, :id, :position, params[:dcr]), class: 'form-control form-control_add', prompt: "Select doctor"%> </p>
+      <%= submit_tag ("Search"), class: "btn btn-outline-primary"%>
+      <%= link_to "Create visit", root_path, class: "btn btn-outline-dark"%>
+    <%end%>
+
+
+  <br>
+
+  <% if @spaces%>
+
+    <% if @spaces.length == 0 %>
+      <div>Doctor is free.</div>
+    <% end %>
+
+    <tbody>
+    <% @spaces.each do |space| %>
+      <tr>
+        <td><%= space.start_time %> </td>
+        <td>- <%= space.end_time %></td>
+      </tr>
+    <% end %>
+    </tbody>
+
   <%end%>
 
-<% if @spaces%>
-  <%= @spaces.each do |space| %>
-  <ul>
-    <li><%= space.start_time %>-<%= space.end_time %></li>
-  </ul>
-  <% end %>
-<%end%>
-
-  <%= link_to "To main page", root_path %>
-
+  </div>
 
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Interval</title>
 
+  <% @title = "Interval" %>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -49,22 +49,28 @@
   </div>
 <% end %>
 
+  <div class="inp_space">
+
+    <h2>New space</h2>
+
   <%= form_for Space.new do |f|%>
 
-  <%= f.label :create_date %>
-  <%= f.text_field :create_date, id: "datepicker", :autocomplete => :off%>
+    <%= f.label :create_date %>
+    <%= f.text_field :create_date, id: "datepicker", :autocomplete => :off, :class => "txt_field"%>
 
-  <p>Choose a Doctor: <%= f.collection_select :doctor_id, Doctor.all, :id, :position, prompt: true %> </p>
-  <p>Choose a Patient name: <%= f.collection_select :patient_id, Patient.all, :id, :name_with_ln, prompt: true%></p>
-  <p><%= f.label :start_time %>
-   <%= f.text_field :start_time, id: "tp1", :autocomplete => :off%></p>
+    <p>Choose a Doctor: <%= f.collection_select :doctor_id, Doctor.all, :id, :position, {prompt: true}, {class: 'form-control form-control_add'} %> </p>
+    <p>Choose a Patient name: <%= f.collection_select :patient_id, Patient.all, :id, :name_with_ln, {prompt: true}, {class: 'form-control form-control_add'}%></p>
+    <p><%= f.label :start_time %>
+    <%= f.text_field :start_time, id: "tp1", :autocomplete => :off, :class => "txt_field"%></p>
 
-  <p><%= f.label :end_time %>
-  <%= f.text_field :end_time, id: "tp2", :autocomplete => :off%></p>
+    <p><%= f.label :end_time %>
+    <%= f.text_field :end_time, id: "tp2", :autocomplete => :off, :class => "txt_field"%></p>
 
-  <%= f.submit 'Save', class: 'btn btn-success'%>
+    <%= f.submit 'Save', class: 'btn btn-outline-primary'%>
 
-<% end %>
+    <% end %>
+
+  </div>
 
 </body>
 
