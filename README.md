@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple web-site where you can keep a database of records for doctors. JQuery pickers are used here to simplify information entry.
 
-Things you may want to cover:
+To run the application you need:
 
-* Ruby version
+* Ruby version: 2.7.2
 
-* System dependencies
+* Rails version: 6.0.3.4
 
-* Configuration
+* MySQL2
 
-* Database creation
+* Clone this repository to empty folder
 
-* Database initialization
+* Enter this folder in console and run: bundle install
 
-* How to run the test suite
+* In file ../config/database.yml set username and password
 
-* Services (job queues, cache servers, search engines, etc.)
+* Run rails db:create to create database.
 
-* Deployment instructions
+* Run rails db:migrate to run migrates in this project.
 
-* ...
+* And run rails s to start project server.
+
+
+For the project to work correctly, you need to create at least one doctor using MySQL, as this item is not provided in the project.
